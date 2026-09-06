@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">forecast<span>7</span></div>
+
+      <!-- Search -->
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search city..." autocomplete="off" />
+        <button id="search-btn" aria-label="Search">🔍</button>
+        <button id="location-btn" aria-label="Use my location">📍</button>
+      </div>
+
+      <div class="header-right">
+        <span id="last-updated"></span>
+        <button id="theme-toggle-btn" aria-label="Toggle theme">☀️</button>
+        <span class="unit-toggle">
+          <button id="unit-c" class="unit-btn active">°C</button>
+          <span>/</span>
+          <button id="unit-f" class="unit-btn">°F</button>
+        </span>
+      </div>
+    </header>
+
+    <!-- Loading & Error -->
+    <div id="loading" class="loading-screen">
+      <div class="spinner"></div>
+      <p>Getting your location & weather...</p>
+    </div>
+    <div id="error-msg" class="error-msg hidden"></div>
+
+    <!-- Main Content -->
+    <main id="weather-content" class="hidden">
+
+      <!-- Current Weather -->
+      <section class="current-weather">
+        <div class="current-left">
+          <h1 id="city-name">--</h1>
+          <p id="country-name" class="country">--</p>
+          <p id="current-date" class="current-date">--</p>
+        </div>
+        <div class="current-center">
+          <img id="weather-icon" src="" alt="weather icon" />
+          <p id="weather-desc">--</p>
+        </div>
+        <div class="current-right">
+          <div class="temp-big"><span id="temperature">--</span><span class="deg">°C</span></div>
+          <p id="feels-like" class="feels-like">Feels like --°C</p>
+        </div>
+      </section>
+
+      <!-- Stats Bar -->
+      <section class="stats-bar">
+        <div class="stat-item">
+          <span class="stat-label">Humidity</span>
+          <span id="humidity" class="stat-value">--%</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-label">Wind</span>
+          <span id="wind" class="stat-value">-- m/s</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-label">Cloud Cover</span>
+          <span id="clouds" class="stat-value">--%</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-label">Pressure</span>
+          <span id="pressure" class="stat-value">-- hPa</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-label">Visibility</span>
+          <span id="visibility" class="stat-value">-- km</span>
+        </div>
+      </section>
+
+      <!-- 24 Hour Forecast -->
+      <section class="forecast-section">
+        <h2 class="section-title">Next 24 hours</h2>
+        <div class="hourly-wrapper">
+          <button class="scroll-btn scroll-left" id="scroll-left" aria-label="Scroll left">&#8249;</button>
+          <div class="hourly-scroll" id="hourly-scroll">
+            <div id="hourly-container" class="hourly-container"></div>
+          </div>
+          <button class="scroll-btn scroll-right" id="scroll-right" aria-label="Scroll right">&#8250;</button>
+        </div>
+      </section>
+
+      <!-- 7 Day Forecast -->
+      <section class="forecast-section">
+        <h2 class="section-title">Next 7 days</h2>
+        <div class="daily-controls">
+          <button id="hide-all-btn" class="toggle-all-btn">▼ show all details</button>
+          <button id="show-all-btn" class="toggle-all-btn">▲ hide all details</button>
+        </div>
+        <div id="daily-container" class="daily-container"></div>
+      </section>
+
+    </main>
+
+    <footer class="footer">Data by <a href="https://openweathermap.org" target="_blank" rel="noopener">OpenWeather</a></footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
